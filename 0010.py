@@ -5,20 +5,6 @@ Problem :
 
 """
 
-# primes = [2] + [number for number in range(3, 2000000, 2)]
-#
-# i = 1
-# while i < len(primes):
-#     prime = primes[i]
-#     multiple = 2 * prime
-#     while multiple < primes[-1] / 2:
-#         if multiple in primes:
-#             primes.remove(multiple)
-#         multiple += prime
-#     i += 1
-#
-# print(sum(primes))
-
 composites = set()
 primes = list()
 current = 2
