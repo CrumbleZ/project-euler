@@ -42,6 +42,3 @@ for number in triangular_numbers():
     if divisors_count(number) > 500:
         print(number)
         break
-
-
-
