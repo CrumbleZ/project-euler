@@ -5,4 +5,4 @@ Problem :
 
 """
 
-print(str(sum(int(number) for number in open("./data/0013.txt").read().splitlines()))[:10])
+print(str(sum(int(number) for number in open("./../data/0013.txt").read().splitlines()))[:10])

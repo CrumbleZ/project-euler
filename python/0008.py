@@ -6,7 +6,7 @@ Problem :
 
 """
 
-number = [int(value) for value in open("./data/0008.txt").read().replace("\n", "")]
+number = [int(value) for value in open("./../data/0008.txt").read().replace("\n", "")]
 
 product = 0
 
