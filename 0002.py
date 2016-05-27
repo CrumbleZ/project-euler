@@ -21,4 +21,4 @@ def fibonacci(limit):
         yield serie[-1]
         serie.append(sum(serie[-2:]))
 
-print(sum([value for value in fibonacci(4000000) if value % 2 == 0]))
+print(sum(value for value in fibonacci(4000000) if value % 2 == 0))
