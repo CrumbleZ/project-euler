@@ -8,4 +8,4 @@ Problem :
 
 from math import pow
 
-print(int(pow(sum([value for value in range(101)]), 2) - sum([pow(value, 2) for value in range(101)])))
+print(int(pow(sum(value for value in range(101)), 2) - sum(pow(value, 2) for value in range(101))))
