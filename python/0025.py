@@ -5,14 +5,16 @@ Problem :
 
 """
 
+from itertools import takewhile
+
+
 def fibonacci():
     index, a, b = 1, 1, 1
     while True:
         yield index, a
         a, b, index = b, a + b, index + 1
 
-f = fibonacci()
-while len(str(f.__next__()[1])) < 1000:
-    fib = f.__next__()
+for last in takewhile(lambda f: len(str(f[1])) < 1000, fibonacci()):
+    pass
 
-print(fib[0] - 1)
+print(last[0] + 1)
