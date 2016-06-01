@@ -1,7 +1,7 @@
 """
 
 Problem :
-    Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
+    What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9?
 
 """
 
