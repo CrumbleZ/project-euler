@@ -1,0 +1,1 @@
+In[1]:= Total[Union[Range[0,999,3],Range[0,999,5]]]
