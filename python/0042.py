@@ -20,7 +20,7 @@ def triangle(limit):
         index += 1
     return t(index)
 
-with open("./../data/0042.txt") as f:
+with open("./../data/words.txt") as f:
     words = sorted(f.read().upper().replace("\"", "").split(","))
 
 print(sum(1 for word in words if word_score(word) == triangle(word_score(word))))

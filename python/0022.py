@@ -8,7 +8,7 @@ Problem :
 
 """
 
-with open("./../data/0022.txt") as f:
+with open("./../data/names.txt") as f:
     names = sorted(f.read().upper().replace("\"", "").split(","))
 
 print(sum((i+1) * sum(ord(c) - 64 for c in names[i]) for i in range(len(names))))
