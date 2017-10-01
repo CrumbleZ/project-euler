@@ -13,3 +13,8 @@ class pe_timer:
     @staticmethod
     def stop():
         print("Execution time : {0:f}".format(round(time.perf_counter() - pe_timer._timer, 5)))
+
+def xor_swap(a, b):
+    a = a ^ b
+    b = b ^ a
+    a = a ^ b

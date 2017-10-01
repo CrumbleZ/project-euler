@@ -7,18 +7,27 @@ Problem :
 Nota Bene :
     The problem states that sequence starts with 1 and 2 instead of 0 and 1
 
-Code specifics :
-    To be a real fibonacci generator, the code should yield the first value
-    of the serie too. But as we only need even numbers, we can omit that.
-
+Optimizations:
+    Needing only the even-valued number, we see that we get the repeating
+    sequence 'odd-even-odd' in the numbers generated. We can use that to
+    fasten the generation process.
 """
 
+from utils import pe_timer
+from utils import xor_swap
 
-def fibonacci(limit):
-    serie = [1, 2]
+def fibonacci_even(limit):
+    a, b = 1, 2
 
-    while serie[-1] < limit:
-        yield serie[-1]
-        serie.append(sum(serie[-2:]))
+    while b < limit:
+        yield b
+        a += b
+        b += a
+        a += b
+        xor_swap(a, b)
 
-print(sum(value for value in fibonacci(4000000) if value % 2 == 0))
+pe_timer.start()
+
+print(sum(fibonacci_even(4000000)))
+
+pe_timer.stop()
