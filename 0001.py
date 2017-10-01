@@ -5,4 +5,10 @@ Problem :
 
 """
 
-print(sum(value for value in range(1000) if value % 3 == 0 or value % 5 == 0))
+from utils import pe_timer
+
+pe_timer.start()
+
+print(sum(set(range(0, 1000, 3)) | set(range(0, 1000, 5))))
+
+pe_timer.stop()
