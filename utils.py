@@ -1,20 +1,33 @@
+import math
 
-# ===== IMPORTS =============
-import time
 
-class pe_timer:
-    _timer = 0
+def fibonacci():
+    """Iterates over the fibonacci sequence"""
+    a, b = 0, 1
+    yield a
 
-    @staticmethod
-    def start():
-        print("Answer : ", end="")
-        pe_timer._timer = time.perf_counter()
+    while True:
+        yield b
+        a += b
+        a, b = b, a
 
-    @staticmethod
-    def stop():
-        print("Execution time : {0:f}".format(round(time.perf_counter() - pe_timer._timer, 5)))
 
-def xor_swap(a, b):
-    a = a ^ b
-    b = b ^ a
-    a = a ^ b
+def product(iterable):
+    p = 1
+    for elem in iterable:
+        p *= elem
+    return p
+
+
+def get_divisors(number):
+    """ Returns a set containing all prime factors of n """
+    factors = set([1])
+
+    divisor = 2
+    while divisor <= int(number ** 0.5):
+        if number % divisor == 0:
+            factors.add(divisor)
+            factors.add(number // divisor)
+        divisor += 1
+
+    return factors

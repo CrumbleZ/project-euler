@@ -12,7 +12,7 @@ This repository simply is a way for me to track my own progress through the chal
 Also, feel free to suggest any code amelioration, be it in terms of style and/or efficiency
 
 ## Will there be other languages
-Not in the close future. I'm firstly trying to solve the challgences in Python 3. But maybe I'll adapt them into other programming languages when I'm the mood. It will be a good way for me to dig into other programming languages
+Not in the close future. I'm firstly trying to solve the challenges in Python 3. But maybe I'll adapt them into other programming languages when I'm the mood. It will be a good way for me to dig into other programming languages
 
 ## About the wiki
 For now, it simply is a list of mathematical principles that are expressed by the problems themselves or things I learned that helped me solve a particular problem.

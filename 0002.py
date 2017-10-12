@@ -11,23 +11,22 @@ Optimizations:
     Needing only the even-valued number, we see that we get the repeating
     sequence 'odd-even-odd' in the numbers generated. We can use that to
     fasten the generation process.
+
+Performance time: ~0.00002s
 """
 
-from utils import pe_timer
-from utils import xor_swap
+from timer import timer
 
-def fibonacci_even(limit):
+def fibonacci_custom(limit):
     a, b = 1, 2
-
     while b < limit:
         yield b
         a += b
         b += a
         a += b
-        xor_swap(a, b)
+        a, b = b, a
 
-pe_timer.start()
 
-print(sum(fibonacci_even(4000000)))
-
-pe_timer.stop()
+timer.start()
+print(sum(fibonacci_custom(4000000)))
+timer.stop()

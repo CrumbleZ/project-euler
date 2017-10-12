@@ -3,17 +3,14 @@
 Problem :
     Find the sum of all the primes below two million.
 
+Performance time: ~0.08s
+
 """
 
-composites = set()
-primes = list()
-current = 2
+from timer import timer
+from primes import list_primes
 
-while current < 2000000:
-    if current not in composites:
-        primes.append(current)
-        for multiple in range(2 * current, 2000000, current):
-            composites.add(multiple)
-    current += 1
 
-print(sum(primes))
+timer.start()
+print(sum(list_primes(2000000)))
+timer.stop()

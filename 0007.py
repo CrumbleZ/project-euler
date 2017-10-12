@@ -3,23 +3,13 @@
 Problem :
     What is the 10 001st prime number?
 
-To-do :
-    Some time optimization is certainly possible
-    using a different algorithm
+Performance time: ~0.037s
 
 """
 
-primes = [2]
-current = 3
+from timer import timer
+from primes import nth_prime
 
-while len(primes) < 10001:
-    i = 0
-    while i < len(primes) and not current % primes[i] == 0:
-        i += 1
-
-    if i >= len(primes):
-        primes.append(current)
-
-    current += 2
-
-print(primes[-1])
+timer.start()
+print(nth_prime(10001))
+timer.stop()

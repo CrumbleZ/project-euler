@@ -2,27 +2,43 @@
 
 Problem :
     The following iterative sequence is defined for the set of positive integers:
-        n ? n/2 (n is even)
-        n ? 3n + 1 (n is odd)
+        n => n/2 (n is even)
+        n => 3n + 1 (n is odd)
 
     Which starting number, under one million, produces the longest chain?
 
+Performance time: ~2.4s
+
 """
 
+from timer import timer
 
-def collatz_count(number):
-    length = 1
+class Collatz:
+    chain_length = {}
+    chain_length[0] = 0
+    chain_length[1] = 1
 
-    while number > 1:
-        number = number / 2 if number % 2 == 0 else 3 * number + 1
-        length += 1
+    @staticmethod
+    def get_chain_length(n):
+        if Collatz.chain_length.get(n) is None:
+            if n % 2 == 0:
+                Collatz.chain_length[n] = 1 + Collatz.get_chain_length(n / 2)
+            else:
+                Collatz.chain_length[n] = 1 + Collatz.get_chain_length(3 * n + 1)
 
-    return length
+        return Collatz.chain_length[n]
 
-answer = (1, 1)
+
+timer.start()
+
+max_chain = 0
+answer = 0
 for value in range(1000000):
-    count = collatz_count(value)
-    if count > answer[1]:
-        answer = (value, count)
+    new_chain = Collatz.get_chain_length(value)
+    if new_chain > max_chain:
+        max_chain = new_chain
+        answer = value
 
-print(answer[0])
+print(answer)
+
+timer.stop()

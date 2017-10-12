@@ -4,10 +4,14 @@ Problem :
     Find the maximum total from top to bottom of the given triangle:
 
 Nota Bene :
-    This is purposely solved by brute force as problem 67 requires a clever method for a bigger triangle
+    This is purposefully solved by brute force as problem 67 requires a clever
+    method for a bigger triangle
+
+Performance time: ~0.031s
 
 """
 
+from timer import timer
 
 def max_path(triangle):
     if len(triangle) > 1:
@@ -19,7 +23,12 @@ def max_path(triangle):
     else:
         return triangle[0][0]
 
-with open("./../data/0018.txt") as f:
+
+timer.start()
+
+with open("./data/0018.txt") as f:
     content = [[int(number) for number in line.split(" ")] for line in f.read().splitlines()]
 
 print(max_path(content))
+
+timer.stop()

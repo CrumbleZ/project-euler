@@ -11,18 +11,22 @@ Nota Bene :
     In mathematics, the equivalent function of the written
     lattice_paths is the result of 2 times 'n choose k'
 
+Performance time: ~0.00004s
+
 """
 
 from math import factorial
+from timer import timer
 
 
-def lattice_paths(x, y):
-    if x > y:
-        n, k = x, y
-    else:
-        n, k = y, x
+def nCr(n, r):
+    if n < r:
+        n, r = r, n
 
-    n = n + k - 1
-    return 2 * factorial(n) / (factorial(k) * factorial(n - k))
+    n = n + r - 1
+    return 2 * factorial(n) / (factorial(r) * factorial(n - r))
 
-print(lattice_paths(20, 20))
+
+timer.start()
+print(nCr(20, 20))
+timer.stop()

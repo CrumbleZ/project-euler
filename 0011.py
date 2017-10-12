@@ -4,9 +4,16 @@ Problem :
     What is the greatest product of four adjacent numbers in the same direction
     (up, down, left, right, or diagonally) in the 20×20 grid?
 
+    Performance time: ~0.0016s
+
 """
 
-with open("./../data/0011.txt") as f:
+from timer import timer
+
+
+timer.start()
+
+with open("./data/0011.txt") as f:
     grid = [[int(value) for value in line.split(" ")] for line in f.readlines()]
 
 answer = 0
@@ -33,7 +40,6 @@ for i in range(20):
         if i+4 <= 20 and j <= 16:
             product = 1
             for k in range(i, i+4):
-                print(j+k)
                 product *= grid[k][j+k-i]
             if product > answer:
                 answer = product
@@ -46,3 +52,5 @@ for i in range(20):
             if product > answer:
                 answer = product
 print(answer)
+
+timer.stop()

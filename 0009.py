@@ -10,10 +10,13 @@ In other words :
         2. a + b + c = 1000
         3. a^2 + b^2 = c^2
 
+Performance time: ~0.019s
+
 """
 
-from math import pow
+from timer import timer
 
+timer.start()
 
 def special_pythagorean_triplet():
     for a in range(1, 1000):
@@ -23,7 +26,9 @@ def special_pythagorean_triplet():
 
             c = 1000 - (a + b)
 
-            if pow(a, 2) + pow(b, 2) == pow(c, 2):
+            if a * a + b * b == c * c:
                 return a * b * c
 
 print(special_pythagorean_triplet())
+
+timer.stop()

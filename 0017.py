@@ -1,16 +1,24 @@
 """
 
 Problem :
-    If all the numbers from 1 to 1000 (one thousand) inclusive were written out in words,
-    how many letters would be used?
+    If all the numbers from 1 to 1000 (one thousand) inclusive were written out
+    in words, how many letters would be used?
 
 Note :
     Do not count spaces or hyphens.
     For example, 342 (three hundred and forty-two) contains 23 letters
     and 115 (one hundred and fifteen) contains 20 letters.
-    The use of "and" when writing out numbers is in compliance with British usage.
+    The use of "and" when writing out numbers is in compliance with British
+    usage.
+
+Performance time: ~0.0052s
 
 """
+
+from timer import timer
+
+
+timer.start()
 
 number_strings = {
     1: "one",
@@ -45,7 +53,7 @@ number_strings = {
 }
 
 # Generate a file with all numbers written in letter
-with open("./../data/0017.txt", "w+") as f:
+with open("./data/0017.txt", "w+") as f:
     for i in range(1, 1001):
 
         if i == 1000:
@@ -75,5 +83,7 @@ with open("./../data/0017.txt", "w+") as f:
         f.write("\n")
 
 # Count every character that is not a whitespace character
-with open("./../data/0017.txt", "r") as f:
+with open("./data/0017.txt", "r") as f:
     print(len(f.read().replace(" ", "").replace("\n", "")))
+
+timer.stop()
