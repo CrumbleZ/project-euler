@@ -4,27 +4,27 @@ Problem:
     It can be seen that the number, 125874, and its double, 251748,
     contain exactly the same digits, but in a different order.
 
-    Find the smallest positive integer, x, such that 2x, 3x, 4x, 5x, and 6x, contain the same digits.
+    Find the smallest positive integer, x, such that 2x, 3x, 4x, 5x, and 6x,
+    contain the same digits.
+
+Performance time: ~0.24ss
 
 """
 
-
-def match_digits(number, other):
-    return True if sorted(str(number)) == sorted(str(other)) else False
+from timer import timer
 
 
-def multi_match_digits(number, times):
-    if times < 2:
-        return False
+timer.start()
 
-    for i in range(2, times + 1):
-        if not match_digits(number, i * number):
-            return False
+number = 2
+while not (sorted(str(number)) == \
+           sorted(str(number * 2)) == \
+           sorted(str(number * 3)) == \
+           sorted(str(number * 4)) == \
+           sorted(str(number * 5)) == \
+           sorted(str(number * 6))):
+    number += 1
 
-    return True
+print(number)
 
-value = 1
-while not multi_match_digits(value, 6):
-    value += 1
-
-print(value)
+timer.stop()

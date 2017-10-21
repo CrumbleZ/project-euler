@@ -2,32 +2,31 @@
 
 Problem :
     Find the smallest prime which, by replacing part of the number
-    (not necessarily adjacent digits) with the same digit, is part of an eight prime value family.
+    (not necessarily adjacent digits) with the same digit, is part of an eight
+    prime value family.
 
 Note :
-    Not knowing how to approach the problem, thanks MathBlogs "Problem Analysis" part that sent me on the right track
+    Not knowing how to approach the problem, thanks MathBlogs "Problem
+    Analysis" part that sent me on the right track
     http://www.mathblog.dk/project-euler-51-eight-prime-family/
 
-    I forced myself not to look at his code. The point was really to find a starting point.
+    I forced myself not to look at his code. The point was really to find a
+    starting point.
+
+Performance time: ~0.16s
 
 """
 
 import re
 
-
-def primes_to(n):
-    """ Returns  a list of primes < n """
-    sieve = [True] * (n // 2)
-    for i in range(3, int(n ** 0.5) + 1, 2):
-        if sieve[i // 2]:
-            sieve[i * i // 2::i] = [False] * ((n - i * i - 1) // (2 * i) + 1)
-    return [2] + [2 * i + 1 for i in range(1, n // 2) if sieve[i]]
+from primes import list_primes
+from timer import timer
 
 
 def solve_problem():
     # We know we are looking for a number with 5 digits or more
     # let's assume 5 to 6 digits
-    primes = [prime for prime in primes_to(1000000) if prime > 10000]
+    primes = [prime for prime in list_primes(1000000) if prime > 10000]
 
     # Now we've got to sort out the ones that that have three repeating digits
     # excepting the last digit
@@ -63,6 +62,7 @@ def solve_problem():
                     print(generated[0])
                     return 0
 
+
+timer.start()
 solve_problem()
-
-
+timer.stop()

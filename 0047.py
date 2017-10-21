@@ -4,28 +4,26 @@ Problem :
     Find the first four consecutive integers to have four distinct prime
     factors. What is the first of these numbers?
 
-To-do :
-    Improve time efficiency
+Performance time: ~0.37s
 
 """
 
-
-from primes import generate_primes
-from primes import prime_factors
+from timer import timer
 
 
-value = 1
-pfs = [0, 0, 0, 0]
+timer.start()
 
-while pfs != [4, 4, 4, 4]:
-    pfs.pop(0)
-    pfs.append(len(prime_factors(value)))
-    value += 1
+upper_limit = 1000000
+factors_count = [0] * upper_limit
 
-    if value % 1000 == 0:
+for value in range(2, upper_limit):
+    #if value is prime, mark all its multiple with one distinc factor
+    if factors_count[value] == 0:
+        for mark in range(value, upper_limit, value):
+            factors_count[mark] += 1
+    #else, check if 4 consecutives have 4 distinct primes
+    elif factors_count[value:value + 4] == [4, 4, 4, 4]:
         print(value)
+        break
 
-    if value > 1000000:
-        print("Overflow")
-
-print(value - 4)
+timer.stop()

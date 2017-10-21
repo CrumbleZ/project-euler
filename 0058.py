@@ -6,22 +6,16 @@ Problem:
     what is the side length of the square spiral
     for which the ratio of primes along both diagonals first falls below 10%?
 
+Performance time: ~39s
+
 """
 
 
-def is_prime(number):
-    divider = 2
+from primes import is_prime
+from timer import timer
 
-    while divider <= number ** .5:
-        if number % divider == 0:
-            return False
-        else:
-            divider += 1
 
-    if number < 2:
-        return False
-
-    return True
+timer.start()
 
 prime_count = 3
 diagonals = [1.0, 3.0, 5.0, 7.0, 9.0]
@@ -34,3 +28,5 @@ while prime_count / len(diagonals) >= 0.1:
             prime_count += 1
 
 print(diagonals[-1] ** .5)
+
+timer.stop()

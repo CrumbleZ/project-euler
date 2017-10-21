@@ -1,19 +1,24 @@
 """
 
 Problem:
-    The file, poker.txt, contains one-thousand random hands dealt to two players.
-    Each line of the file contains ten cards (separated by a single space):
-    The first five are Player 1's cards and the last five are Player 2's cards.
-    You can assume that all hands are valid (no invalid characters or repeated cards),
-    each player's hand is in no specific order, and in each hand there is a clear winner.
+    The file, poker.txt, contains one-thousand random hands dealt to two
+    players. Each line of the file contains ten cards (separated by a single
+    space): The first five are Player 1's cards and the last five are Player
+    2's cards. You can assume that all hands are valid (no invalid characters
+    or repeated cards), each player's hand is in no specific order, and in each
+    hand there is a clear winner.
 
     How many hands does Player 1 win?
 
-Note:
+Nota bene:
     T stands for 10
+
+Performance time: ~0.13s
+
 """
 
 from enum import IntEnum
+from timer import timer
 
 
 class Ranks(IntEnum):
@@ -105,7 +110,9 @@ class Poker:
         return Ranks.high_card, sorted(h, key=lambda value: -Poker.values.index(value[0]))
 
 
-with open("./../data/poker.txt") as poker:
+timer.start()
+
+with open("./data/poker.txt") as poker:
 
     results = []
     p1_wins = 0
@@ -134,6 +141,4 @@ with open("./../data/poker.txt") as poker:
 
     print(p1_wins)
 
-# player_1 = ["AH", "8C", "6D", "JC", "9H"]
-# player_1.sort(key=lambda card: (card[1], Poker.values.index(card[0])))
-# print(Poker.get_rank(player_1))
+timer.stop()

@@ -55,7 +55,7 @@ def list_primes(number):
 
 
 def nth_prime(n):
-    "Returns the nth prime"
+    """Returns the nth prime"""
     # Tweaked version of the itertools nth recipe
     return next(islice(generate_primes(), n-1, None), None)
 
@@ -63,6 +63,8 @@ def nth_prime(n):
 def prime_factors(number):
     """ Returns a set containing all prime factors of n """
     factors = set()
+
+    if number == 0 : return factors
 
     # first round factors by two
     if number % 2 == 0: factors.add(2)

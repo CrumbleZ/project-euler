@@ -13,15 +13,16 @@ Nota bene:
         (ii) no one, with all the computing power that exists, has managed so
              far to map it to a palindrome.
 
+Performance time: ~0.054s
+
 """
+
+from timer import timer
+from utils import is_palindrome
 
 
 def reverse_and_add(value):
     return value + int(str(value)[::-1])
-
-
-def is_palindrome(value):
-    return True if str(value) == str(value)[::-1] else False
 
 
 def is_lychrel(value):
@@ -32,10 +33,13 @@ def is_lychrel(value):
     return True
 
 
-lychrel_count = 0
+timer.start()
 
+lychrel_count = 0
 for i in range(10000):
     if is_lychrel(i):
         lychrel_count += 1
 
 print(lychrel_count)
+
+timer.stop()

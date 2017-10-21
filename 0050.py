@@ -1,34 +1,33 @@
 """
 
 Problem :
-    Which prime, below one-million, can be written as the sum of the most consecutive primes?
+    Which prime, below one-million, can be written as the sum of the most
+    consecutive primes?
+
+Performance time: ~12s
 
 """
 
-
-def primes_to(n):
-    """ Returns  a list of primes < n """
-    sieve = [True] * (n // 2)
-    for i in range(3, int(n ** 0.5) + 1, 2):
-        if sieve[i // 2]:
-            sieve[i * i // 2::i] = [False] * ((n - i * i - 1) // (2 * i) + 1)
-    return [2] + [2 * i + 1 for i in range(1, n // 2) if sieve[i]]
+from primes import list_primes
+from primes import generate_primes
+from timer import timer
 
 
-def solve_problem():
-    primes = primes_to(1000000)
+timer.start()
 
-    max_sequence = 0
-    while sum(primes[:max_sequence]) < 1000000:
-        max_sequence += 1
+primes = list_primes(1000000)
+max_seq, total, answer = 0, 0, 0
 
-    for sequence_length in range(max_sequence, 22, -1):
-        for i in range(len(primes) - sequence_length):
-            total = sum(primes[i:i + sequence_length])
-            if total < 1000000 and total in primes:
-                return total
+for index in range(len(primes)):
+    total = 0
+    for count, prime in enumerate(primes[index:]):
+        total += prime
+        if total > answer and count > max_seq and total in primes:
+            answer = total
+            max_seq = count
+        elif total > 1000000:
+            break
 
-    return 0
+print(answer)
 
-print(solve_problem())
-
+timer.stop()
