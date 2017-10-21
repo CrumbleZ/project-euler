@@ -3,16 +3,15 @@
 Problem:
     How many Lychrel numbers are there below ten-thousand?
 
-Note:
+Nota bene:
     Due to the theoretical nature of these numbers,
     and for the purpose of this problem,
-    we shall assume that a number is Lychrel
-    until proven otherwise.
+    we shall assume that a number is Lychrel until proven otherwise.
     In addition you are given that for every number
-    below ten-thousand, it will either (i) become a palindrome
-    in less than fifty iterations, or, (ii) no one,
-    with all the computing power that exists,
-    has managed so far to map it to a palindrome.
+    below ten-thousand, it will either
+        (i) become a palindrome in less than fifty iterations, or,
+        (ii) no one, with all the computing power that exists, has managed so
+             far to map it to a palindrome.
 
 """
 

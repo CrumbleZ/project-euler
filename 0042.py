@@ -1,9 +1,14 @@
 """
 
 Problem :
-    Using 0042.txt a text file containing nearly two-thousand common English words, how many are triangle words?
+    Using 0042.txt a text file containing nearly two-thousand common English
+    words, how many are triangle words?
+
+Performance time: ~0.011s
 
 """
+
+from timer import timer
 
 
 def t(n):
@@ -20,7 +25,12 @@ def triangle(limit):
         index += 1
     return t(index)
 
-with open("./../data/words.txt") as f:
+
+timer.start()
+
+with open("./data/words.txt") as f:
     words = sorted(f.read().upper().replace("\"", "").split(","))
 
 print(sum(1 for word in words if word_score(word) == triangle(word_score(word))))
+
+timer.stop()

@@ -1,4 +1,5 @@
 import math
+import itertools
 
 
 def fibonacci():
@@ -12,6 +13,24 @@ def fibonacci():
         a, b = b, a
 
 
+def multiplicative_order(a, n):
+    """
+    Returns the multiplicative order of a mod n
+    The multiplicative order is a positive integer k > 0, such that
+    a^k = 1 (mod n)
+    """
+    for k in itertools.count(start=1):
+        if a**k % n == 1:
+            return k
+        if k > n:
+            return 0
+
+
+def nth(iterable, n, default=None):
+    "Returns the nth item or a default value"
+    return next(islice(iterable, n, None), default)
+
+
 def product(iterable):
     p = 1
     for elem in iterable:
@@ -20,7 +39,7 @@ def product(iterable):
 
 
 def get_divisors(number):
-    """ Returns a set containing all prime factors of n """
+    """ Returns a set containing all prime factors of n, but n itself """
     factors = set([1])
 
     divisor = 2

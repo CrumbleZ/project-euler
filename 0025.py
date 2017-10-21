@@ -1,20 +1,25 @@
 """
 
 Problem :
-    What is the index of the first term in the Fibonacci sequence to contain 1000 digits?
+    What is the index of the first term in the Fibonacci sequence to contain
+    1000 digits?
+
+Performance time: ~0.027s
 
 """
 
-from itertools import takewhile
+from itertools import count
+from timer import timer
+from utils import fibonacci
 
 
-def fibonacci():
-    index, a, b = 1, 1, 1
-    while True:
-        yield index, a
-        a, b, index = b, a + b, index + 1
+timer.start()
 
-for last in takewhile(lambda f: len(str(f[1])) < 1000, fibonacci()):
-    pass
+f = fibonacci()
+for counter in count():
+    if len(str(next(f))) >= 1000:
+        break
 
-print(last[0] + 1)
+print(counter)
+
+timer.stop()

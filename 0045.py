@@ -3,27 +3,23 @@
 Problem :
     Find the next triangle number that is also pentagonal and hexagonal.
 
+Performance time: ~0.054s
+
 """
 
-from math import sqrt
+import polygonals as poly
+from timer import timer
 
 
-def is_p(value):
-    return (1 + sqrt(1 + 24 * value)) / 6 % 1 == 0
-
-
-def is_h(value):
-    return (1 + sqrt(1 + 8 * value)) / 4 % 1 == 0
-
-
-def t(n):
-    return n * (n + 1) / 2
+timer.start()
 
 i = 286
 while True:
-    if is_p(t(i)) and is_h(t(i)):
+    if (  poly.is_pentagonal(poly.nth_triangular(i)) and
+          poly.is_hexagonal(poly.nth_triangular(i))):
         break
     i += 1
 
-print(t(i))
+print(poly.nth_triangular(i))
 
+timer.stop()

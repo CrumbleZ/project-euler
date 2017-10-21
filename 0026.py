@@ -1,27 +1,32 @@
 """
 
 Problem :
-    Find the value of d < 1000 for which 1/d contains the longest recurring cycle in its decimal fraction part.
+    Find the value of d < 1000 for which 1/d contains the longest recurring
+    cycle in its decimal fraction part.
+
+Assumptions :
+    I'm betting on the fact that the longest repetend will be give by a prime
+    denominator
+
+Performance time: ~0.18s
 
 """
 
-from math import pow
+from primes import is_prime
+from timer import timer
+from utils import multiplicative_order
 
 
-def order(n, a=10):
-    period = list()
-    k = 0
-    power = pow(a, k) % n
-    while power not in period:
-        period.append(power)
-        k += 1
-        power = period[-1] * a % n
+timer.start()
 
-    if power == 0:
-        return 0
+answer, repetend_length = 0, 0
+for number in range(1, 1000):
+    #Fractions with prime denominators comprime to 10
+    if is_prime(number) and number != 2 and number != 5:
+        mo = multiplicative_order(10, number)
+        if mo > repetend_length:
+            answer, repetend_length = number, mo
 
-    return len(period[period.index(power):])
+print(answer)
 
-
-repetend_lengths = [order(i) for i in range(1, 1000)]
-print(repetend_lengths.index(max(repetend_lengths)) + 1)
+timer.stop()

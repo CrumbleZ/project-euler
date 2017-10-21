@@ -3,29 +3,20 @@
 Problem :
     What is the largest n-digit pandigital prime that exists?
 
+Performance time: ~0.023s
+
 """
 
 from itertools import permutations
-from math import sqrt
+from primes import is_prime
+from timer import timer
 
 
 def is_pandigital(number):
     return True if "".join(sorted((str(number)))) == "123456789" else False
 
 
-def is_prime(number):
-    divider = 2
-
-    while divider <= sqrt(number):
-        if number % divider == 0:
-            return False
-        else:
-            divider += 1
-
-    if number < 2:
-        return False
-
-    return True
+timer.start()
 
 numbers = list()
 pandigit = "1"
@@ -39,3 +30,5 @@ for number in numbers:
         break
 
 print(number)
+
+timer.stop()

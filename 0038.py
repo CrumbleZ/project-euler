@@ -8,8 +8,14 @@ Assumption :
     I highly doubt that n = 2 in the answer so instead we can greatly reduce
     the range of iteration by a factor 1000 (10^3)
 
+Performance time: ~0.015s
+
 """
 
+from timer import timer
+
+
+timer.start()
 
 def is_pandigital(number):
     return True if "".join(sorted((str(number)))) == "123456789" else False
@@ -28,3 +34,5 @@ for i in range(10000):
                 answer = int(concatenated)
 
 print(answer)
+
+timer.stop()

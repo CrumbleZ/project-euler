@@ -1,34 +1,23 @@
 """
 
 Problem :
-    Find the sum of the only eleven primes that are both truncatable from left to right and right to left.
+    Find the sum of the only eleven primes that are both truncatable from left
+    to right and right to left.
+
+Nota bene :
+    2, 3, 5, and 7 are not considered truncatable, so remove them from the
+    answer.
+
+Performance time: ~20s
 
 """
 
-from math import sqrt
-
-primes = list()
-
-
-def is_prime(number):
-    if number in primes:
-        return True
-
-    divider = 2
-    while divider <= sqrt(number):
-        if number % divider == 0:
-            return False
-        else:
-            divider += 1
-
-    if number < 2:
-        return False
-
-    primes.append(number)
-    return True
+from primes import generate_primes
+from primes import is_prime
+from timer import timer
 
 
-def is_truncable_prime(number):
+def is_truncatable_prime(number):
     if number < 10:
         return False
 
@@ -37,19 +26,20 @@ def is_truncable_prime(number):
     while len(left) > 0:
         if not is_prime(int(left)) or not is_prime(int(right)):
             return False
-        left = left[:-1]
-        right = right[1:]
+        left, right = left[:-1], right[1:]
 
     return True
 
 
-count = 0
-value = 11
-truncables = list()
-while count < 11:
-    if is_truncable_prime(value):
-        count += 1
-        truncables.append(value)
-    value += 2
+timer.start()
 
-print(sum(truncables))
+answer, counter = 0, 0
+for prime in generate_primes():
+    if is_truncatable_prime(prime):
+        answer, counter = answer + prime, counter + 1
+    if counter >= 11:
+        break
+
+print(answer)
+
+timer.stop()

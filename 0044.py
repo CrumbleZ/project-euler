@@ -5,27 +5,30 @@ Problem :
     their sum and difference are pentagonal
     and D = |Pk − Pj| is minimised; what is the value of D?
 
+Performance time: ~2.5s
+
 """
 
 from math import sqrt
+from polygonals import is_pentagonal
+from polygonals import nth_pentagonal
+from timer import timer
 
 
-def p(n):
-    return n * (3 * n - 1) / 2
 
 
-def is_p(value):
-    return (1 + sqrt(1 + 24 * value)) / 6 % 1 == 0
 
+timer.start()
 
 k = 2
 flag = True
 while flag:
     for j in range(1, k):
-        if is_p(p(j) + p(k)) and is_p(p(k) - p(j)):
+        if is_pentagonal(nth_pentagonal(j) + nth_pentagonal(k)) and is_pentagonal(nth_pentagonal(k) - nth_pentagonal(j)):
             flag = False
             break
     k += 1
 
-print(p(k-1) - p(j))
+print(nth_pentagonal(k-1) - nth_pentagonal(j))
 
+timer.stop()

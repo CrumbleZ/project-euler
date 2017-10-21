@@ -1,7 +1,8 @@
 """
 
 Problem :
-    Let d1 be the 1st digit, d2 be the 2nd digit, and so on. In this way, we note the following:
+    Let d1 be the 1st digit, d2 be the 2nd digit, and so on. In this way, we
+    note the following:
 
     d2d3d4=406 is divisible by 2
     d3d4d5=063 is divisible by 3
@@ -13,20 +14,27 @@ Problem :
 
     Find the sum of all 0 to 9 pandigital numbers with this property.
 
+Performance time: ~6.9s
+
 """
 
 from itertools import permutations
+from timer import timer
+
+
+timer.start()
 
 numbers = [int("".join(number)) for number in permutations("0123456789") if number[0] != "0"]
 primes = [2, 3, 5, 7, 11, 13, 17]
 
-
 def is_special(number):
     number = str(number)
     for i in range(1, 8):
-        d = int("".join(number[i+j] for j in range(3)))
+        d = int("".join(number[i:i+3]))
         if not d % primes[i-1] == 0:
             return False
     return True
 
 print(sum(number for number in numbers if is_special(number)))
+
+timer.stop()

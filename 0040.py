@@ -8,7 +8,14 @@ Problem :
 
     d1 × d10 × d100 × d1000 × d10000 × d100000 × d1000000
 
+Performance time: ~0.35s
+
 """
+
+from timer import timer
+
+
+timer.start()
 
 fraction = ""
 for i in range(1, 10**6):
@@ -19,3 +26,5 @@ for i in range(7):
     answer *= int(fraction[10**i - 1])
 
 print(answer)
+
+timer.stop()

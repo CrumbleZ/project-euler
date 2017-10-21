@@ -1,11 +1,18 @@
 """
 
 Problem :
-    What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9?
+    What is the millionth lexicographic permutation of the digits 0, 1, 2, 3,
+    4, 5, 6, 7, 8 and 9?
+
+Performance time: ~0.00006s
 
 """
 
 from math import factorial
+from timer import timer
+
+
+timer.start()
 
 answer = ""
 position = 1000000
@@ -18,3 +25,5 @@ for loop in range(10, 0, -1):
     digits.remove(digit)
 
 print(answer)
+
+timer.stop()
