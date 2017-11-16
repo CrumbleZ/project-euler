@@ -55,3 +55,12 @@ def product(iterable):
     for elem in iterable:
         p *= elem
     return p
+
+def sum_of_digits(number):
+    #NB: Included @65
+    #TODO : Upgrade all problems before 65 that may use this
+    s = 0
+    while number:
+        s += number % 10
+        number //= 10
+    return s
