@@ -7,9 +7,11 @@ Performance time: ~0.00010s
 
 """
 
+from utils import sum_of_digits
 from timer import timer
 
 
+
 timer.start()
-print(sum(int(digit) for digit in str(2 ** 1000)))
+print(sum_of_digits(2 ** 1000))
 timer.stop()
