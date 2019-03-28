@@ -12,10 +12,7 @@ Performance time: ~0.0066s
 """
 
 from timer import timer
-
-
-def is_palindrome(value):
-    return True if str(value) == str(value)[::-1] else False
+from utils import is_palindrome
 
 
 timer.start()

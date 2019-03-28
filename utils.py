@@ -15,7 +15,12 @@ def fibonacci():
 
 def is_palindrome(value):
     """Tells whether a number is palindromic or not"""
-    return True if str(value) == str(value)[::-1] else False
+    return str(value) == str(value)[::-1]
+
+def is_square(number):
+    """Tells whether a number is square or not. Works for negative nubmers"""
+    return abs(number) ** 0.5 % 1 == 0
+
 
 
 def get_divisors(number):

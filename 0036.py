@@ -9,12 +9,9 @@ Performance time: ~0.56s
 """
 
 from timer import timer
-
-
-def is_palindrome(value):
-    return True if str(value) == str(value)[::-1] and str(bin(value)[2:]) == str(bin(value))[:1:-1] else False
+from utils import is_palindrome
 
 
 timer.start()
-print(sum(i for i in range(1000000) if is_palindrome(i)))
+print(sum(i for i in range(1000000) if is_palindrome(i) and is_palindrome(f'{i:b}')))
 timer.stop()
