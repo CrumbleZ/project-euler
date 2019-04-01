@@ -2,12 +2,12 @@ import math
 import itertools
 
 
-def fibonacci():
+def fibonacci(limit=-1):
     """Iterates over the fibonacci sequence"""
     a, b = 0, 1
     yield a
 
-    while True:
+    while b < limit or limit < 0:
         yield b
         a += b
         a, b = b, a
