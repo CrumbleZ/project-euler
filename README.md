@@ -7,7 +7,9 @@
 > The motivation for starting Project Euler, and its continuation, is to provide a platform for the inquiring mind to delve into unfamiliar areas and learn new concepts in a fun and recreational context.
 
 ## What is this repository?
-This repository simply is a way for me to track my own progress through the challenges and also share my solutions with the world. That way, maybe this will help people in need of answers.
+This repository simply is a way for me to track my own progress through the challenges. If you are undertaking project euler challenges, please refrain from consulting this repository until you have found a solution on your own, both because Project Euler recommends not sharing solutions online and also because you are a responsible human being who loves to tackle challenges and not spoil yourself.
+
+Consider this repository as my permanent personal archive, since posts on the Project Euler forums are not necessarily permanent.
 
 Also, feel free to suggest any code amelioration, be it in terms of style and/or efficiency
 

@@ -3,7 +3,7 @@
 Problem :
     Find the maximum total from top to bottom in triangle.txt
 
-Performance time:
+Performance time: ~0.003s
 
 """
 
