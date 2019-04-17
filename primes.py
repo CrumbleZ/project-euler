@@ -1,11 +1,24 @@
-from itertools import count
-from itertools import cycle
-from itertools import islice
+from itertools import count, cycle, islice, takewhile
 import math
 
 
 def are_coprimes(a, b):
     return math.gcd(a, b) == 1
+
+
+def eulers_totient(n):
+    """Indicates the amount of numbers <n that are relatively prime to n"""
+    if is_prime(n):
+        return n - 1
+
+    totient = n
+    primes = [p for p in takewhile(lambda x: x < n / 2 ,generate_primes())]
+
+    for p in primes:
+        if n % p == 0:
+            totient = int(totient * (1 - 1/p))
+
+    return totient
 
 
 def generate_primes():
@@ -43,6 +56,19 @@ def is_prime(number):
         prime = next(prime_iter)
 
     return True
+
+
+def least_prime_factor(number):
+    if number == 0:
+        return None
+    elif is_prime(number):
+        return number
+    else:
+        primes = list_primes(number ** 0.5 + 1)
+        for prime in primes:
+            if number % prime == 0:
+                return prime
+    return None
 
 
 def list_primes(number):
