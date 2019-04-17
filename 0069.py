@@ -1,21 +1,42 @@
 """
 
 Problem :
-    Using the numbers 1 to 10, and depending on arrangements, it is possible to
-    form 16- and 17-digit strings. What is the maximum 16-digit string for a
-    "magic" 5-gon ring?
+    With Euler's Totient function φ(n), find the value of n ≤ 1,000,000 for
+    which n/φ(n) is a maximum.
 
-Improvements :
-    We should note that Euler's totient function is a multiplicative function,
-    meaning that if two numbers m and n are relatively prime, then φ(mn) =
-    φ(m)φ(n) * d/phi(d) where d is gcd(m, n).
+Nota Bene :
+    for n / phi(n) to be big, n needs to be big and phi(n) needs to be small.
+    Having a small phi(n) means having few numbers that are relatively prime to
+    n. To reduce these numbers to a minimum, we should find a number composed of
+    a great amount of prime numbers. If you think about it, having a prime as a
+    coprime will remove all multiples of that prime as coprimes of n.
+    Therefore, a heavily composite numbers will have very few divisors.
 
-Performance time: todo
+    Based on that reflexion, we can say that the most composite number (the
+    biggest one in case there are multiples composite numbers with the same
+    amount of prime factors) will be the biggest n for which n / phi(n) will
+    give the greatest value.
+
+Performance time: ~0.00003s
 
 """
 
-from utils import product
-from primes import list_primes
-from primes import prime_factors
+from primes import generate_primes
+from timer import timer
 
-print(prime_factors(510510))
+
+timer.start()
+
+answer = 1
+has_increased = False
+while not has_increased:
+    has_increased = False
+    for prime in generate_primes():
+        if answer * prime <= 1000000:
+            has_increased = True
+            answer *= prime
+        else: break
+
+print(answer)
+
+timer.stop()
