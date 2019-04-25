@@ -1,4 +1,5 @@
 from itertools import count, cycle, islice, takewhile
+from utils import product
 import math
 
 
@@ -8,17 +9,8 @@ def are_coprimes(a, b):
 
 def eulers_totient(n):
     """Indicates the amount of numbers <n that are relatively prime to n"""
-    if is_prime(n):
-        return n - 1
+    return product(map(lambda x: x - 1, prime_factors(n)))
 
-    totient = n
-    primes = [p for p in takewhile(lambda x: x < n / 2 ,generate_primes())]
-
-    for p in primes:
-        if n % p == 0:
-            totient = int(totient * (1 - 1/p))
-
-    return totient
 
 
 def generate_primes():
@@ -87,19 +79,19 @@ def nth_prime(n):
 
 
 def prime_factors(number):
-    """ Returns a set containing all prime factors of n """
-    factors = set()
+    """ Returns a list containing all prime factors of n """
+    factors = []
 
     if number == 0 : return factors
 
     # first round factors by two
-    if number % 2 == 0: factors.add(2)
+    if number % 2 == 0: factors.append(2)
     while number % 2 == 0: number /= 2
 
     # other rounds goes by odd numbers only (no other even is prime)
     divisor = 3
     while divisor <= number:
-        if number % divisor == 0: factors.add(divisor)
+        if number % divisor == 0: factors.append(divisor)
         while number % divisor == 0: number /= divisor
         divisor += 2
 
