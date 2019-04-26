@@ -17,7 +17,6 @@ Performance time: ~1.8s
 
 """
 
-from primes import eulers_totient as phi
 from primes import list_primes
 from timer import timer
 

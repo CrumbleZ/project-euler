@@ -9,8 +9,7 @@ def are_coprimes(a, b):
 
 def eulers_totient(n):
     """Indicates the amount of numbers <n that are relatively prime to n"""
-    return product(map(lambda x: x - 1, prime_factors(n)))
-
+    return int(n * product(1 - 1 / p for p in prime_factors(n)))
 
 
 def generate_primes():
