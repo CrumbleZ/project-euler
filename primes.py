@@ -84,14 +84,16 @@ def prime_factors(number):
     if number == 0 : return factors
 
     # first round factors by two
-    if number % 2 == 0: factors.append(2)
-    while number % 2 == 0: number /= 2
+    while number % 2 == 0:
+        factors.append(2)
+        number /= 2
 
     # other rounds goes by odd numbers only (no other even is prime)
     divisor = 3
     while divisor <= number:
-        if number % divisor == 0: factors.append(divisor)
-        while number % divisor == 0: number /= divisor
+        while number % divisor == 0:
+            factors.append(divisor)
+            number /= divisor
         divisor += 2
 
     return factors
