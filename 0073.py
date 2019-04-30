@@ -9,7 +9,6 @@ Performance time : ~3.8s
 """
 
 from timer import timer
-from primes import list_primes
 from primes import prime_factors
 
 
