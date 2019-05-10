@@ -8,9 +8,9 @@ Performance time: ~0.0014s
 """
 
 from timer import timer
-from primes import prime_factors
+from euler.primes import prime_factors
 
 
 timer.start()
-print(max(prime_factors(600851475143)))
+print(prime_factors(600851475143)[-1])
 timer.stop()
