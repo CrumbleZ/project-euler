@@ -11,22 +11,13 @@ Speed-up :
     We can use that as a speed-up and look for the Least Common Multiple of
     (2520, [11, 20]) instead of [1, 20]
 
-Performance time: ~0.00003s
+Performance time: ~0.00002s
 
 """
 
 from timer import timer
-from math import gcd
-
+from euler.math_ext import lcm
 
 timer.start()
-
-def lcm(numbers):
-    if len(numbers) > 2:
-        return lcm([numbers[0]] + [lcm(numbers[1:])])
-    else:
-        return (numbers[0] // gcd(numbers[0], numbers[1])) * numbers[1]
-
 print(lcm([2520] + [value for value in range(11, 21)]))
-
 timer.stop()
