@@ -3,7 +3,8 @@ def prime_factors(number):
     # so no division ever goes to waste. such as 9, 15, 21 etc.
     # It will take more memory but it will definitely be faster
     """
-    Returns an ordered list containing all prime factors of a number
+    Returns an ordered list containing all prime factors
+    composing a given number
     Origin : Problem 3
     """
     factors, divisor = [], 3
