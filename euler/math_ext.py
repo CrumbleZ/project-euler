@@ -9,4 +9,4 @@ def lcm(numbers):
     least_multiple = 1
     for number in numbers:
         least_multiple *= number // gcd(least_multiple, number)
-    return lowest
+    return least_multiple
