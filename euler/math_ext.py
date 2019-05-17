@@ -10,3 +10,9 @@ def lcm(numbers):
     for number in numbers:
         least_multiple *= number // gcd(least_multiple, number)
     return least_multiple
+
+
+def prod(iterable, start=1):
+    for p in iterable:
+        start *= p
+    return start

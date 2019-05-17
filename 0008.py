@@ -10,23 +10,10 @@ Performance time: ~0.0016s
 """
 
 from timer import timer
+from euler.math_ext import prod
 
 
 timer.start()
-
-number = [int(value) for value in open("./data/0008.txt").read().replace("\n", "")]
-
-product = 0
-
-for i in range(len(number) - 12):
-    inner_product = 1
-
-    for value in number[i:i+13]:
-        inner_product *= value
-
-    if inner_product > product:
-        product = inner_product
-
-print(product)
-
+number = [int(digit) for digit in open("./data/0008.txt").read().replace("\n", "")]
+print(max(prod(number[i:i+13]) for i in range(len(number) - 12)))
 timer.stop()

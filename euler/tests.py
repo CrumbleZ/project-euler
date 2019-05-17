@@ -9,6 +9,11 @@ class Math(unittest.TestCase):
         self.assertEqual(math_ext.lcm([8, 9, 21]), 504)
         self.assertEqual(math_ext.lcm([21, 6]), 42)
 
+    def test_prod(self):
+        self.assertEqual(math_ext.prod(range(10)), 0)
+        self.assertEqual(math_ext.prod(range(1, 10)), 362880)
+        self.assertEqual(math_ext.prod([9,9,8,9]), 5832)
+
 class Sequences(unittest.TestCase):
 
     def test_fibonacci(self):
